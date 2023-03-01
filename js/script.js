@@ -29,7 +29,7 @@ function playRound(playerSelection, computerSelection) {
         } else if (computerSelection == "paper") {
             message = "You Lose! Paper beats Rock";
         } else {
-            message = "Error! - Rock";
+            message = "Error! Incorrect Input";
         }
     } else if (playerSelection == "paper") {
         if (computerSelection == "paper"){
@@ -39,7 +39,7 @@ function playRound(playerSelection, computerSelection) {
         } else if (computerSelection == "scissor") {
             message = "You Lose! Scissor beats Paper";
         } else {
-            message = "Error! - Scissor";
+            message = "Error! Incorrect Input";
         }
     } else if (playerSelection == "scissor") {
         if (computerSelection == "scissor"){
@@ -49,10 +49,10 @@ function playRound(playerSelection, computerSelection) {
         } else if (computerSelection == "rock") {
             message = "You Lose! Rock beats Scissor";
         } else {
-            message = "Error! - Paper";
+            message = "Error! Incorrect Input";
         }
     } else {
-        message = "Error! - playerSelection";
+        message = "Error! Incorrect Input";
     }
 
     return message;
@@ -79,6 +79,8 @@ function game () {
             ++scorePlayer;
         } else if (result == "You Lose") {
             ++scoreComputer;
+        } else if (result == "Error"){
+            --i;
         }
 
         alert(
