@@ -29,7 +29,7 @@ function playRound(playerSelection, computerSelection) {
         } else if (computerSelection == "paper") {
             message = "You Lose! Paper beats Rock";
         } else {
-            message = "Error - Rock";
+            message = "Error! - Rock";
         }
     } else if (playerSelection == "paper") {
         if (computerSelection == "paper"){
@@ -39,7 +39,7 @@ function playRound(playerSelection, computerSelection) {
         } else if (computerSelection == "scissor") {
             message = "You Lose! Scissor beats Paper";
         } else {
-            message = "Error - Scissor";
+            message = "Error! - Scissor";
         }
     } else if (playerSelection == "scissor") {
         if (computerSelection == "scissor"){
@@ -49,11 +49,43 @@ function playRound(playerSelection, computerSelection) {
         } else if (computerSelection == "rock") {
             message = "You Lose! Rock beats Scissor";
         } else {
-            message = "Error - Paper";
+            message = "Error! - Paper";
         }
     } else {
-        message = "Error - playerSelection";
+        message = "Error! - playerSelection";
     }
 
     return message;
+}
+
+function game () {
+
+    let round = 0;
+    let scorePlayer = 0;
+    let scoreComputer = 0;
+
+    for (let i = 1; i <= 5; i++) {
+
+        round = i;
+
+        let playerSelection = prompt("Input 'Rock' - 'Paper' - 'Scissor'");
+        let computerSelection = getComputerChoice();
+
+        let message = playRound(playerSelection, computerSelection);
+        let exclamationPointIndex = message.indexOf("!");
+        let result = message.slice(0,exclamationPointIndex);
+
+        if (result == "You Win") {
+            ++scorePlayer;
+        } else if (result == "You Lose") {
+            ++scoreComputer;
+        }
+
+        alert(
+        `Round ${round}
+        ${message} 
+        Player: ${scorePlayer} 
+        Computer: ${scoreComputer}`);
+
+    }
 }
