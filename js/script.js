@@ -20,8 +20,7 @@ function playRound(playerSelection, computerSelection) {
 
     computerSelection = getComputerChoice();
 
-    let messageBox = document.getElementById('message');
-    let message = messageBox.innerText;
+    let message;
 
     if (playerSelection == "rock") {
         if (computerSelection == "rock"){
@@ -56,8 +55,13 @@ function playRound(playerSelection, computerSelection) {
     } else {
         message = "Error! Incorrect Input";
     }
+   displayMessage(message);
     
-    
+}
+
+// to change the text inside the div message
+function displayMessage(message) {
+    document.getElementById('message').innerText = message;
 }
 
 function game () {
