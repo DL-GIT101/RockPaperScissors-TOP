@@ -18,8 +18,10 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
 
-    playerSelection = playerSelection.toLowerCase();
-    let message;
+    computerSelection = getComputerChoice();
+
+    let messageBox = document.getElementById('message');
+    let message = messageBox.innerText;
 
     if (playerSelection == "rock") {
         if (computerSelection == "rock"){
@@ -54,8 +56,8 @@ function playRound(playerSelection, computerSelection) {
     } else {
         message = "Error! Incorrect Input";
     }
-
-    return message;
+    
+    
 }
 
 function game () {
@@ -91,3 +93,14 @@ function game () {
 
     }
 }
+
+// select all buttons and assign each of them the eventlistener with the function that 
+// has the playRound function with button text as the argument
+const btns  = document.querySelectorAll('button');
+btns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        let btnText = btn.innerText.toLowerCase();
+        playRound(btnText);
+    });
+    
+});
