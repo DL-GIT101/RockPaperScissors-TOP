@@ -4,12 +4,12 @@ body {
     align-items: center;
 }
 
-.container {
+.choices {
     margin: 20px 0px
 }
 
-.messageBox {
-    border: 5px solid black;
+.box {
+    border: 3px solid black;
     height: 70px;
     width: 325px;
     text-align: center;
@@ -18,6 +18,20 @@ body {
     justify-content: center;
 }
 
-h2 {
+.box h2 {
     margin: 0;
+    color: grey;
+}
+
+.board {
+    display: flex;
+    height: 70px;
+    width: 325px;
+    justify-content: space-between;
+}
+
+.board .player {
+    text-align: center;
+    font-weight: 700;
+    font-size: larger;
 }
