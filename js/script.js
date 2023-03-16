@@ -55,8 +55,9 @@ function playRound(playerSelection, computerSelection) {
     } else {
         message = "Error! Incorrect Input";
     }
-   displayMessage(message);
-    
+
+   game(message);
+   
 }
 
 // to change the text inside the div message
@@ -64,22 +65,14 @@ function displayMessage(message) {
     document.getElementById('message').innerText = message;
 }
 
-function game () {
+function game(message) {
 
-    let round = 0;
-    let scorePlayer = 0;
-    let scoreComputer = 0;
-
-    for (let i = 1; i <= 5; i++) {
-
-        round = i;
-
-        let playerSelection = prompt("Input 'Rock' - 'Paper' - 'Scissor'");
-        let computerSelection = getComputerChoice();
-
-        let message = playRound(playerSelection, computerSelection);
+        // get the length till the explamation point for the slice function
         let exclamationPointIndex = message.indexOf("!");
         let result = message.slice(0,exclamationPointIndex);
+
+        let scorePlayer = document.getElementById('playerScore').innerText;
+        let scoreComputer = document.getElementById('computerScore').innerText;
 
         if (result == "You Win") {
             ++scorePlayer;
@@ -89,13 +82,17 @@ function game () {
             --i;
         }
 
-        alert(
-        `Round ${round}
-        ${message} 
-        Player: ${scorePlayer} 
-        Computer: ${scoreComputer}`);
+        document.getElementById('playerScore').innerText = scorePlayer;
+        document.getElementById('computerScore').innerText = scoreComputer;
 
-    }
+        if(scorePlayer == 5){
+            displayMessage("You win against the Computer");
+        } else if(scoreComputer == 5){
+            displayMessage("You lose against the Computer");
+        } else {
+            displayMessage(message);
+        }
+    
 }
 
 // select all buttons and assign each of them the eventlistener with the function that 
