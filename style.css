@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    margin: 20px 0px
+}
+
+.messageBox {
+    border: 5px solid black;
+    height: 70px;
+    width: 325px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 {
+    margin: 0;
+}
