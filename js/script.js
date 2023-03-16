@@ -86,13 +86,45 @@ function game(message) {
         document.getElementById('computerScore').innerText = scoreComputer;
 
         if(scorePlayer == 5){
-            displayMessage("You win against the Computer");
+            displayMessage("You win against the Computer");     
+            reset();
         } else if(scoreComputer == 5){
             displayMessage("You lose against the Computer");
+            reset();
         } else {
             displayMessage(message);
         }
     
+}
+
+// resets the score and append "new game" button
+function reset() {
+
+    let choices = document.querySelectorAll('.choices button');
+    choices.forEach((choice) => {
+        choice.disabled = true;
+    });
+
+    let box = document.getElementById('box');
+    const button  = document.createElement('button');
+    button.innerText = "New Game";
+    button.addEventListener('click', enableBTN)
+    box.appendChild(button);
+    
+    document.getElementById('playerScore').innerText = 0;
+    document.getElementById('computerScore').innerText = 0;
+}
+
+function enableBTN() {
+    let choices = document.querySelectorAll('.choices button');
+    choices.forEach((choice) => {
+        choice.disabled = false;
+    });
+
+    let box = document.getElementById('box');
+    box.removeChild(box.lastElementChild);
+
+    displayMessage('Result will appear here');
 }
 
 // select all buttons and assign each of them the eventlistener with the function that 
